@@ -1,19 +1,24 @@
 package com.serverprogramming.bookstore.bookstore.domain;
 
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
 public class Book {
+    @Id
+    private String isbn;
     private String title;
     private String author;
-    private String year;
-    private String isbn;
+    private String years;
     private double price;
 
-    public Book(String title, String author, String year, String isbn, double price) {
+    public Book() {
+    }
+
+    public Book(String isbn,String title, String author, String years, double price) {
+        this.isbn = isbn;
         this.title = title;
         this.author = author;
-        this.year = year;
-        this.isbn = isbn;
+        this.years = years;
         this.price = price;
     }
 
@@ -22,12 +27,12 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Double.compare(book.price, price) == 0 && Objects.equals(title, book.title) && Objects.equals(author, book.author) && Objects.equals(year, book.year) && Objects.equals(isbn, book.isbn);
+        return Double.compare(book.price, price) == 0 && Objects.equals(title, book.title) && Objects.equals(author, book.author) && Objects.equals(years, book.years) && Objects.equals(isbn, book.isbn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, author, year, isbn, price);
+        return Objects.hash(title, author, years, isbn, price);
     }
 
     @Override
@@ -35,7 +40,7 @@ public class Book {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
-                ", year='" + year + '\'' +
+                ", year='" + years + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", price=" + price +
                 '}';
@@ -58,11 +63,11 @@ public class Book {
     }
 
     public String getYear() {
-        return year;
+        return years;
     }
 
     public void setYear(String year) {
-        this.year = year;
+        this.years = year;
     }
 
     public String getIsbn() {
