@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BookStoreController {
@@ -34,5 +35,12 @@ public class BookStoreController {
     public String deleteBook(@PathVariable("id") String bookId, Model model) {
         repository.deleteById(bookId);
         return "redirect:../booklist";
+    }
+
+    @RequestMapping(value="/edit", method=RequestMethod.GET)
+    public String editBook(@RequestParam(name="isbn") String isbn, Model model) {
+        model.addAttribute("book", repository.findById(isbn));
+        System.out.println("---------------------------------------------------------------------------------");
+        return "bookedit";
     }
 }
