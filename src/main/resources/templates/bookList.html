@@ -4,10 +4,11 @@
 <head>
     <title>Books</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
     <h1>Books</h1>
-    <table class="table table-striped">
+    <table class="table table-striped" >
         <tr>
             <!-- all tag empty are just for the layout -->
             <th>Author</th>
@@ -26,10 +27,10 @@
             <td th:text="${book.isbn}  "></td>
             <td></td>
             <td th:text="${book.year}"></td>
-            <td><a th:href="@{/delete/{isbn}(isbn=${book.isbn})}">Delete</a></td>
-            <td><a th:href="@{/edit(isbn=${book.isbn})}">edit</a></td>
+            <td><a th:href="@{/delete/{isbn}(isbn=${book.isbn})}" class="btn btn-danger">Delete</a></td>
+            <td><a th:href="@{/edit(isbn=${book.isbn})}" class="btn btn-danger">edit </a></td>
         </tr>
     </table>
-    <a href="/add" class="btn btn-primary">Add Book</a>
+    <a href="/add" class="btn btn-success" >Add Book</a>
 </body>
 </html>
